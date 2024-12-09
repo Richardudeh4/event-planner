@@ -8,7 +8,6 @@ type RequestType = InferRequestType<typeof client.api.workspaces["$post"]>;
 
 export const useCreateWorkspace = () => {
  
-    
     const queryClient = useQueryClient();
     const mutation = useMutation<
     ResponseType, 

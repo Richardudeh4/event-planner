@@ -13,6 +13,7 @@ import React, { useRef } from "react";
 import Image from "next/image";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { ImageIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 
 
@@ -21,6 +22,7 @@ interface createWorkspaceFormProps {
 }
 
  const CreateWorkspaceForm = ({ onCancel }: createWorkspaceFormProps) => {
+  const router = useRouter();
   const {mutate,isPending} = useCreateWorkspace();
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -36,8 +38,10 @@ interface createWorkspaceFormProps {
       image: values.image instanceof File ? values.image: "",
     }
        mutate({form:finalValues}, {
-        onSuccess: () => {
+        onSuccess: ({data}) => {
+          // onCancel?.();
           form.reset();
+          router.push(`/workspaces/${data.$id}`);
         }
        });
     }; 
