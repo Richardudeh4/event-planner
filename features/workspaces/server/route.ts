@@ -1,6 +1,6 @@
 import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
-import { createWorkspaceSchema } from "../schema";
+import { createWorkspaceSchema, updateWorkspaceSchema } from "../schema";
 import { sessionMiddleware } from "@/lib/session-middleware";
 import { DATABASE_ID, IMAGES_BUCKET_ID, MEMBERS_ID, WORKSPACES_ID } from "@/app/config";
 import { ID, Query } from "node-appwrite";
@@ -81,5 +81,11 @@ const app = new Hono()
         );
         return c.json({data: workspace});
     }
-);
+)
+.patch(
+    "/:workspaceId",
+    sessionMiddleware,
+    zValidator("form", updateWorkspaceSchema),
+    // async (c) => 
+)
 export default app;

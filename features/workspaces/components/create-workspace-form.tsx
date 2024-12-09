@@ -14,6 +14,7 @@ import Image from "next/image";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { ImageIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 
 
@@ -128,7 +129,7 @@ interface createWorkspaceFormProps {
             </div>
             <DottedSeparator className="py-7"/>
             <div className="flex items-center justify-between">
-              <Button type="button" size="lg" variant="secondary" disabled={isPending} onClick={onCancel}>
+              <Button type="button" size="lg" variant="secondary" disabled={isPending} onClick={onCancel} className={cn(!onCancel && "invisble")}>
                  Cancel
               </Button>
               <Button type="submit" size="lg"  disabled={isPending}>
