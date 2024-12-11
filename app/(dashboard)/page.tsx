@@ -1,5 +1,5 @@
 
-import { getCurrent } from "@/features/auth/actions";
+import { getCurrent } from "@/features/auth/queries";
 import { getWorkspaces } from "@/features/workspaces/actions";
 import CreateWorkspaceForm from "@/features/workspaces/components/create-workspace-form";
 
